@@ -38,7 +38,7 @@ public class Main {
 				break;
 			case 3:
 				chartGenPie(file);
-				System.out.println("Deseja publicar esse gráfico no Facebook? (S/N) ");
+				System.out.println("Deseja publicar esse grafico no Facebook? (S/N) ");
 				fbConfirm = sc.next();
 				switch(fbConfirm) {
 				case "S" :
@@ -48,7 +48,7 @@ public class Main {
 					
 					break;
 				case "N" :
-					System.out.println("Gráfico não postado, mas salvo ;)");
+					System.out.println("Grafico nao postado, mas salvo ;)");
 					break;
 				
 				}
@@ -56,7 +56,7 @@ public class Main {
 				break;
 			case 4:
 				ChartGenBar3D(file);
-				System.out.println("Deseja publicar esse gráfico no Facebook? (S/N) ");
+				System.out.println("Deseja publicar esse grafico no Facebook? (S/N) ");
 				fbConfirm = sc.next();
 				switch(fbConfirm) {
 				case "S" :
@@ -66,14 +66,14 @@ public class Main {
 					
 					break;
 				case "N" :
-					System.out.println("Gráfico não postado, mas salvo ;)");
+					System.out.println("Grafico nao postado, mas salvo ;)");
 					break;
 				
 				}
 				break;
 			case 5:
 				ChartGenBar(file);
-				System.out.println("Deseja publicar esse gráfico no Facebook? (S/N) ");
+				System.out.println("Deseja publicar esse grafico no Facebook? (S/N) ");
 				fbConfirm = sc.next();
 				switch(fbConfirm) {
 				case "S" :
@@ -83,7 +83,7 @@ public class Main {
 					
 					break;
 				case "N" :
-					System.out.println("Gráfico não postado, mas salvo ;)");
+					System.out.println("Grafico nao postado, mas salvo ;)");
 					break;
 				
 				}
@@ -95,17 +95,17 @@ public class Main {
 
 	}
 
-	private static String moreThanAWord() {
+	private static String moreThanAWord() { // ler mais de uma linha para a inser��o da msg
 		Scanner scanner = new Scanner(System.in);
 	    return scanner.nextLine();
 	}
 	private static void imprimirMenu () {
 		System.out.println("--------------------------------------------------");
 		System.out.println("1 - Escolher Dataset");
-		System.out.println("2 - Relação Bairro x quantidade de casas");
-		System.out.println("3 - Gráfico Pizza/Torta");
-		System.out.println("4 - Gráfico em Barras 3D");
-		System.out.println("5 - Gráfico em Barras 2D");
+		System.out.println("2 - Relacao Bairro x quantidade de casas/quartos");
+		System.out.println("3 - Grafico Pizza/Torta");
+		System.out.println("4 - Grafico em Barras 3D");
+		System.out.println("5 - Grafico em Barras 2D");
 		System.out.println("0 - Sair");
 	}
 	private static void imprimirBairro(CsvReader csv) {
@@ -134,17 +134,17 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Insira o seu token de acesso:");
 		String to = sc.next();
-		System.out.println("ID do amiguinho que deseja marcar :");
+		System.out.println("ID do amiguinho que deseja marcar:");
 		String idf = sc.next();
 		System.out.println("Nome do amiguinho que vai ser marcado:");
 		String namef = sc.next();
-		PhotoFile pho = new PhotoFile(idf,namef);
+		PostTag pho = new PostTag(idf,namef);
 		System.out.println("Post :");
 		String mes = moreThanAWord();
 		FacebookController fb = new FacebookController();
 		try {
 			fb.postIt(to, path, file_name, mes, pho);
-			System.out.println("Gráfico postado com sucesso");
+			System.out.println("Grafico postado com sucesso!");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

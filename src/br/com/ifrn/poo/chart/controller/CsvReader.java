@@ -100,8 +100,7 @@ public class CsvReader {
     	return parsedLine;
     }
 	public void setData() {
-		int idx = 5;
-				//java.util.Arrays.asList(atributes).indexOf("neighbourhood");
+		int idx = java.util.Arrays.asList(atributes).indexOf("neighbourhood");
 		name = new ArrayList<String>();
 		cout = new ArrayList<Integer>();
 		for(List<String> i : this.lines) {

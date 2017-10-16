@@ -11,9 +11,9 @@ import com.restfb.Parameter;
 import com.restfb.types.FacebookType;
 
 public class FacebookController { 
-	public void postIt(String token, String path, String name_chart,String message, PhotoFile ph) throws FileNotFoundException{
+	public void postIt(String token, String path, String name_chart,String message, PostTag ph) throws FileNotFoundException{
 		String a_token = token;
-		ArrayList<PhotoFile> t_list = new ArrayList<PhotoFile>();
+		ArrayList<PostTag> t_list = new ArrayList<PostTag>();
 		t_list.add(ph);
 		
 		@SuppressWarnings("deprecation")
