@@ -26,7 +26,7 @@ public class Main {
 				break;
 			case 1:
 				System.out.println("--------------------------------------------------");
-				System.out.println("Digite o nome do csv:");
+				System.out.println("Digite o nome do csv: (sem extensao)");
 				nome = sc.next();
 				System.out.println("--------------------------------------------------");
 				file = new CsvReader(nome + ".csv");

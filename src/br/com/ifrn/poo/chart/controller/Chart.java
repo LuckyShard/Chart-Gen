@@ -14,6 +14,19 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 public class Chart {
+	private int axisY;
+	public int getAxisY() {
+		return axisY;
+	}
+	public void setAxisY(ArrayList<Integer> ay) {
+		int y = ay.get(0);
+		for(int i = 0; i < ay.size(); i++) {
+			if(ay.get(i) > y) {
+				y = ay.get(i);
+			}
+		}
+		this.axisY = y; 
+	}
 	public void pieChartGen(CsvReader csv) {
 		csv.setData();
 		ArrayList<String> param1 = csv.getName();
@@ -25,7 +38,9 @@ public class Chart {
 		JFreeChart chart = ChartFactory.createPieChart("Quantidade de quartos/casas disponiveis por bairro", datas, true,false,false);
 		PiePlot plot = (PiePlot)chart.getPlot();
 		plot.setSimpleLabels(false);
-		//plot.setLabelGenerator(null);
+		if(param1.size() > 25) { // caso houver muitos itens desativa a opção da geração de labels automatica
+			plot.setLabelGenerator(null);
+		}
 		int width = 1280;    /* Width of the image */
 		int height = 800;   /* Height of the image */ 
 		File pieChart = new File( "PieChart.jpeg" ); 
@@ -50,7 +65,8 @@ public class Chart {
 		JFreeChart barChart = ChartFactory.createBarChart3D("Quantidade de quartos/casas disponiveis por bairro", "Bairros", "Quantidade de casas/quartos por bairro", datas);
 		CategoryPlot plot = (CategoryPlot) barChart.getPlot();
 		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-		rangeAxis.setRange(0, 2000);
+		this.setAxisY(param2);
+		rangeAxis.setRange(0, this.getAxisY());
 		int width = 1280;    /* Width of the image */
 		int height = 800;   /* Height of the image */ 
 		File barChartt = new File( "BarChart3D.jpeg" ); 
@@ -74,7 +90,8 @@ public class Chart {
 		JFreeChart barChart = ChartFactory.createBarChart("Quantidade de quartos/casas disponiveis por bairro", "Bairros", "Quantidade de casas/quartos por bairro", datas);
 		CategoryPlot plot = (CategoryPlot) barChart.getPlot();
 		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-		rangeAxis.setRange(0, 2000);
+		this.setAxisY(param2); // acha o range max do grafico
+		rangeAxis.setRange(0, this.getAxisY());
 		int width = 1280;    /* Width of the image */
 		int height = 800;   /* Height of the image */ 
 		File barChartt = new File( "BarChart.jpeg" ); 
